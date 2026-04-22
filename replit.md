@@ -1,27 +1,32 @@
-# Workspace
+# Personal Website
 
 ## Overview
 
-pnpm workspace monorepo using TypeScript. Each package manages its own dependencies.
+A frontend-only personal website template built with React + Vite. No backend, no database — pure static frontend.
 
 ## Stack
 
-- **Monorepo tool**: pnpm workspaces
-- **Node.js version**: 24
-- **Package manager**: pnpm
-- **TypeScript version**: 5.9
-- **API framework**: Express 5
-- **Database**: PostgreSQL + Drizzle ORM
-- **Validation**: Zod (`zod/v4`), `drizzle-zod`
-- **API codegen**: Orval (from OpenAPI spec)
-- **Build**: esbuild (CJS bundle)
+- **Framework**: React 19 + Vite
+- **Styling**: Tailwind CSS v4 + shadcn/ui components
+- **Routing**: Wouter
+- **Animations**: Framer Motion
+- **Icons**: Lucide React + React Icons
+- **Theme**: Light/dark mode via ThemeProvider
+- **Package manager**: pnpm (workspace with single artifact)
+
+## Structure
+
+```
+artifacts/personal-website/   # The app
+  src/
+    pages/Home.tsx            # Main single-page layout (8 sections)
+    components/ThemeProvider  # Light/dark mode
+    components/ui/            # shadcn/ui components
+    index.css                 # Theme palette + global styles
+    App.tsx                   # Router + providers
+```
 
 ## Key Commands
 
-- `pnpm run typecheck` — full typecheck across all packages
-- `pnpm run build` — typecheck + build all packages
-- `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from OpenAPI spec
-- `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- `pnpm --filter @workspace/api-server run dev` — run API server locally
-
-See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and package details.
+- `pnpm --filter @workspace/personal-website run dev` — run locally
+- `pnpm --filter @workspace/personal-website run build` — production build
